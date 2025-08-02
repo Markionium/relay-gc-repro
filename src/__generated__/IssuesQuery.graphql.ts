@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<320697a46dc6dfa1c37680fb5177bf6b>>
+ * @generated SignedSource<<fba828725276476baaa1da6083300ef7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,12 +9,13 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
-import { FragmentRefs } from "relay-runtime";
+import { FragmentRefs, DataID } from "relay-runtime";
 import { viewData as queryViewDataResolverType } from "../resolvers/viewData.resolver";
 // Type assertion validating that `queryViewDataResolverType` resolver is correctly implemented.
 // A type error here indicates that the type signature of the resolver module is incorrect.
-(queryViewDataResolverType satisfies () => ViewData | null | undefined);
-import { ViewData } from "../resolvers/viewData.resolver";
+(queryViewDataResolverType satisfies () => {
+  readonly id: DataID;
+} | null | undefined);
 export type IssuesQuery$variables = {
   query?: string | null | undefined;
 };
@@ -29,7 +30,10 @@ export type IssuesQuery = {
   variables: IssuesQuery$variables;
 };
 
+import {ViewData as viewDataRelayModelInstanceResolver} from '../resolvers/viewData.resolver';
 import {viewData as queryViewDataResolver} from '../resolvers/viewData.resolver';
+import ViewData__id_graphql from './ViewData__id.graphql';
+import {resolverDataInjector} from 'relay-runtime/experimental';
 
 const node: ConcreteRequest = (function(){
 var v0 = [
@@ -53,7 +57,10 @@ v2 = {
   "name": "id",
   "storageKey": null
 },
-v3 = {
+v3 = [
+  (v2/*: any*/)
+],
+v4 = {
   "kind": "InlineFragment",
   "selections": [
     {
@@ -61,9 +68,7 @@ v3 = {
       "args": null,
       "fragment": {
         "kind": "InlineFragment",
-        "selections": [
-          (v2/*: any*/)
-        ],
+        "selections": (v3/*: any*/),
         "type": "RestIssue",
         "abstractKey": null
       },
@@ -75,24 +80,43 @@ v3 = {
   "type": "RestIssue",
   "abstractKey": null
 },
-v4 = [
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "__relay_model_instance",
-    "storageKey": null
-  }
-],
 v5 = {
   "kind": "InlineFragment",
-  "selections": (v4/*: any*/),
+  "selections": [
+    {
+      "name": "__relay_model_instance",
+      "args": null,
+      "fragment": {
+        "kind": "InlineFragment",
+        "selections": (v3/*: any*/),
+        "type": "ViewData",
+        "abstractKey": null
+      },
+      "kind": "RelayResolver",
+      "storageKey": null,
+      "isOutputType": false
+    }
+  ],
   "type": "ViewData",
   "abstractKey": null
 },
 v6 = {
   "kind": "InlineFragment",
-  "selections": (v4/*: any*/),
+  "selections": [
+    {
+      "name": "__relay_model_instance",
+      "args": null,
+      "fragment": {
+        "kind": "InlineFragment",
+        "selections": (v3/*: any*/),
+        "type": "IssueViewData",
+        "abstractKey": null
+      },
+      "kind": "RelayResolver",
+      "storageKey": null,
+      "isOutputType": false
+    }
+  ],
   "type": "IssueViewData",
   "abstractKey": null
 };
@@ -113,7 +137,21 @@ return {
       {
         "kind": "ClientEdgeToClientObject",
         "concreteType": "ViewData",
-        "modelResolvers": null,
+        "modelResolvers": {
+          "ViewData": {
+            "alias": null,
+            "args": null,
+            "fragment": {
+              "args": null,
+              "kind": "FragmentSpread",
+              "name": "ViewData__id"
+            },
+            "kind": "RelayResolver",
+            "name": "__relay_model_instance",
+            "resolverModule": resolverDataInjector(ViewData__id_graphql, viewDataRelayModelInstanceResolver, 'id', true),
+            "path": "viewData.__relay_model_instance"
+          }
+        },
         "backingField": {
           "alias": null,
           "args": null,
@@ -121,12 +159,7 @@ return {
           "kind": "RelayResolver",
           "name": "viewData",
           "resolverModule": queryViewDataResolver,
-          "path": "viewData",
-          "normalizationInfo": {
-            "kind": "WeakModel",
-            "concreteType": "ViewData",
-            "plural": false
-          }
+          "path": "viewData"
         },
         "linkedField": {
           "alias": null,
@@ -177,7 +210,7 @@ return {
             {
               "name": "number",
               "args": null,
-              "fragment": (v3/*: any*/),
+              "fragment": (v4/*: any*/),
               "kind": "RelayResolver",
               "storageKey": null,
               "isOutputType": true
@@ -185,7 +218,7 @@ return {
             {
               "name": "title",
               "args": null,
-              "fragment": (v3/*: any*/),
+              "fragment": (v4/*: any*/),
               "kind": "RelayResolver",
               "storageKey": null,
               "isOutputType": true
@@ -193,7 +226,7 @@ return {
             {
               "name": "url",
               "args": null,
-              "fragment": (v3/*: any*/),
+              "fragment": (v4/*: any*/),
               "kind": "RelayResolver",
               "storageKey": null,
               "isOutputType": true
@@ -201,7 +234,7 @@ return {
             {
               "name": "author",
               "args": null,
-              "fragment": (v3/*: any*/),
+              "fragment": (v4/*: any*/),
               "kind": "RelayResolver",
               "storageKey": null,
               "isOutputType": true
@@ -218,7 +251,7 @@ return {
           "fragment": null,
           "kind": "RelayResolver",
           "storageKey": null,
-          "isOutputType": true
+          "isOutputType": false
         },
         "linkedField": {
           "alias": null,
@@ -252,7 +285,7 @@ return {
                 "fragment": (v5/*: any*/),
                 "kind": "RelayResolver",
                 "storageKey": null,
-                "isOutputType": true
+                "isOutputType": false
               },
               "linkedField": {
                 "alias": null,
@@ -278,7 +311,7 @@ return {
                       "fragment": (v6/*: any*/),
                       "kind": "RelayResolver",
                       "storageKey": null,
-                      "isOutputType": true
+                      "isOutputType": false
                     },
                     "linkedField": {
                       "alias": null,
@@ -293,22 +326,39 @@ return {
                           "args": null,
                           "fragment": {
                             "kind": "InlineFragment",
-                            "selections": (v4/*: any*/),
+                            "selections": [
+                              {
+                                "name": "__relay_model_instance",
+                                "args": null,
+                                "fragment": {
+                                  "kind": "InlineFragment",
+                                  "selections": (v3/*: any*/),
+                                  "type": "IssueAuthorViewData",
+                                  "abstractKey": null
+                                },
+                                "kind": "RelayResolver",
+                                "storageKey": null,
+                                "isOutputType": false
+                              }
+                            ],
                             "type": "IssueAuthorViewData",
                             "abstractKey": null
                           },
                           "kind": "RelayResolver",
                           "storageKey": null,
                           "isOutputType": true
-                        }
+                        },
+                        (v2/*: any*/)
                       ],
                       "storageKey": null
                     }
-                  }
+                  },
+                  (v2/*: any*/)
                 ],
                 "storageKey": null
               }
-            }
+            },
+            (v2/*: any*/)
           ],
           "storageKey": null
         }

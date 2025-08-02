@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8c07c2b0e8bbf436a036dd390ba97a84>>
+ * @generated SignedSource<<bedcc338f21ee17a0f801268248be37c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,14 +9,15 @@
 // @ts-nocheck
 
 import { ReaderFragment } from 'relay-runtime';
-import { IssueAuthorViewData } from "../resolvers/viewData.resolver";
-import { FragmentRefs } from "relay-runtime";
+import { FragmentRefs, DataID } from "relay-runtime";
 import { authorModel as issueViewDataAuthorModelResolverType } from "../resolvers/viewData.resolver";
 // Type assertion validating that `issueViewDataAuthorModelResolverType` resolver is correctly implemented.
 // A type error here indicates that the type signature of the resolver module is incorrect.
 (issueViewDataAuthorModelResolverType satisfies (
   __relay_model_instance: IssueViewData____relay_model_instance$data['__relay_model_instance'],
-) => IssueAuthorViewData | null | undefined);
+) => {
+  readonly id: DataID;
+} | null | undefined);
 import { showAuthor as issueViewDataShowAuthorResolverType } from "../resolvers/viewData.resolver";
 // Type assertion validating that `issueViewDataShowAuthorResolverType` resolver is correctly implemented.
 // A type error here indicates that the type signature of the resolver module is incorrect.
@@ -35,8 +36,10 @@ export type Issue_viewData$key = {
   readonly " $fragmentSpreads": FragmentRefs<"Issue_viewData">;
 };
 
+import {IssueAuthorViewData as issueAuthorViewDataRelayModelInstanceResolver} from '../resolvers/viewData.resolver';
 import {authorModel as issueViewDataAuthorModelResolver} from '../resolvers/viewData.resolver';
 import {showAuthor as issueViewDataShowAuthorResolver} from '../resolvers/viewData.resolver';
+import IssueAuthorViewData__id_graphql from './IssueAuthorViewData__id.graphql';
 import IssueViewData____relay_model_instance_graphql from './IssueViewData____relay_model_instance.graphql';
 import {resolverDataInjector} from 'relay-runtime/experimental';
 
@@ -66,7 +69,21 @@ return {
     {
       "kind": "ClientEdgeToClientObject",
       "concreteType": "IssueAuthorViewData",
-      "modelResolvers": null,
+      "modelResolvers": {
+        "IssueAuthorViewData": {
+          "alias": null,
+          "args": null,
+          "fragment": {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "IssueAuthorViewData__id"
+          },
+          "kind": "RelayResolver",
+          "name": "__relay_model_instance",
+          "resolverModule": resolverDataInjector(IssueAuthorViewData__id_graphql, issueAuthorViewDataRelayModelInstanceResolver, 'id', true),
+          "path": "authorModel.__relay_model_instance"
+        }
+      },
       "backingField": {
         "alias": null,
         "args": null,
@@ -74,12 +91,7 @@ return {
         "kind": "RelayResolver",
         "name": "authorModel",
         "resolverModule": resolverDataInjector(IssueViewData____relay_model_instance_graphql, issueViewDataAuthorModelResolver, '__relay_model_instance', true),
-        "path": "authorModel",
-        "normalizationInfo": {
-          "kind": "WeakModel",
-          "concreteType": "IssueAuthorViewData",
-          "plural": false
-        }
+        "path": "authorModel"
       },
       "linkedField": {
         "alias": null,

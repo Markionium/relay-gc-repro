@@ -1,7 +1,16 @@
 /**
  * @RelayResolver ViewData
- * @weak
  */
+export function ViewData(): ViewData {
+  return {
+    id: "viewData",
+    searchPlaceholderText: "Search issues",
+    noResultsText: "No issues found",
+    issueModel: {
+      id: "issueViewData",
+    },
+  };
+}
 export type ViewData = {
   searchPlaceholderText: string;
   noResultsText: string;
@@ -10,17 +19,34 @@ export type ViewData = {
 
 /**
  * @RelayResolver IssueViewData
- * @weak
  */
+export function IssueViewData(): IssueViewData {
+  return {
+    id: "issueViewData",
+    showAuthor: true,
+    authorModel: {
+      id: "issueAuthorViewData",
+    },
+  };
+}
+
 export type IssueViewData = {
   showAuthor: boolean;
   authorModel: IssueAuthorViewData;
 };
 
+
+
 /**
  * @RelayResolver IssueAuthorViewData
- * @weak
  */
+export function IssueAuthorViewData(): IssueAuthorViewData {
+  return {
+    id: "issueAuthorViewData",
+    avatarSize: 16,
+  };
+}
+
 export type IssueAuthorViewData = {
   avatarSize: number;
 };
@@ -30,14 +56,7 @@ export type IssueAuthorViewData = {
  */
 export function viewData(): ViewData {
   return {
-    searchPlaceholderText: "Search issues",
-    noResultsText: "No issues found",
-    issueModel: {
-      showAuthor: true,
-      authorModel: {
-        avatarSize: 16,
-      },
-    },
+    id: "viewData",
   };
 }
 
