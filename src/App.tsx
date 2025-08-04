@@ -19,7 +19,7 @@ const fetchFunction: FetchFunction = (params, variables) => {
 function createEnvironment() {
   const network = Network.create(fetchFunction);
   const store = new Store(new RecordSource(), {
-    gcReleaseBufferSize: 0
+    gcReleaseBufferSize: 1
   });
   return new Environment({ store, network });
 }

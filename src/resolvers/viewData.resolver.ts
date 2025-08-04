@@ -1,7 +1,9 @@
+import { DataID } from 'relay-runtime'
+
 /**
  * @RelayResolver ViewData
  */
-export function ViewData(): ViewData {
+export function ViewData(): { id: DataID; searchPlaceholderText: string; noResultsText: string; issueModel: { id: DataID } } {
   return {
     id: "viewData",
     searchPlaceholderText: "Search issues",
@@ -20,7 +22,7 @@ export type ViewData = {
 /**
  * @RelayResolver IssueViewData
  */
-export function IssueViewData(): IssueViewData {
+export function IssueViewData(): { id: DataID; showAuthor: boolean; authorModel: { id: DataID } } {
   return {
     id: "issueViewData",
     showAuthor: true,
@@ -40,7 +42,7 @@ export type IssueViewData = {
 /**
  * @RelayResolver IssueAuthorViewData
  */
-export function IssueAuthorViewData(): IssueAuthorViewData {
+export function IssueAuthorViewData(): { id: DataID; avatarSize: number } {
   return {
     id: "issueAuthorViewData",
     avatarSize: 16,
@@ -54,7 +56,7 @@ export type IssueAuthorViewData = {
 /**
  * @RelayResolver Query.viewData: ViewData
  */
-export function viewData(): ViewData {
+export function viewData(): { id: DataID } {
   return {
     id: "viewData",
   };
@@ -99,5 +101,5 @@ export function authorModel(viewData: IssueViewData): IssueAuthorViewData {
  * @RelayResolver IssueAuthorViewData.avatarSize: Int
  */
 export function avatarSize(viewData: IssueAuthorViewData): number {
-  return viewData.avatarSize;
+  return viewData?.avatarSize;
 }
