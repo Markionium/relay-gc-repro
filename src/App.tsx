@@ -1,10 +1,7 @@
-import { Environment, FetchFunction, Network, Observable, RecordSource, RelayFeatureFlags, Store} from "relay-runtime";
+import { Environment, FetchFunction, Network, Observable, RecordSource, Store} from "relay-runtime";
 import { RelayEnvironmentProvider } from "react-relay"
 import { Issues } from './Issues';
 import { Suspense } from 'react';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-(RelayFeatureFlags as any).ENABLE_READ_TIME_RESOLVER_STORAGE_KEY_PREFIX = false;
 
 const fetchFunction: FetchFunction = (params, variables) => {
   const response = fetch("https://api.github.com/graphql", {
