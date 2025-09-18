@@ -11,7 +11,7 @@ export type RestIssue = {
 };
 
 /**
- * @RelayResolver RestIssue
+ * @RelayResolver
  */
 export function RestIssue(id: DataID): RestIssue | undefined {
   const issue = ISSUES_STORE.get(id);
@@ -19,28 +19,28 @@ export function RestIssue(id: DataID): RestIssue | undefined {
 }
 
 /**
- * @RelayResolver RestIssue.title: String
+ * @RelayResolver
  */
 export function title(issue: RestIssue): string {
   return issue.title;
 }
 
 /**
- * @RelayResolver RestIssue.url: String
+ * @RelayResolver
  */
 export function url(issue: RestIssue): string {
   return issue.url;
 }
 
 /**
- * @RelayResolver RestIssue.author: String
+ * @RelayResolver
  */
 export function author(issue: RestIssue): string {
   return issue.author;
 }
 
 /**
- * @RelayResolver RestIssue.number: Int
+ * @RelayResolver
  */
 export function number(issue: RestIssue): number {
   return issue.number;

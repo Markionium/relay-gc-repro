@@ -1,7 +1,7 @@
 import { DataID } from 'relay-runtime'
 
 /**
- * @RelayResolver ViewData
+ * @RelayResolver
  */
 export function ViewData(): { id: DataID; searchPlaceholderText: string; noResultsText: string; issueModel: { id: DataID } } {
   return {
@@ -13,6 +13,9 @@ export function ViewData(): { id: DataID; searchPlaceholderText: string; noResul
     },
   };
 }
+/** 
+ * @RelayResolver
+ */
 export type ViewData = {
   searchPlaceholderText: string;
   noResultsText: string;
@@ -20,7 +23,7 @@ export type ViewData = {
 };
 
 /**
- * @RelayResolver IssueViewData
+ * @RelayResolver
  */
 export function IssueViewData(): { id: DataID; showAuthor: boolean; authorModel: { id: DataID } } {
   return {
@@ -32,6 +35,9 @@ export function IssueViewData(): { id: DataID; showAuthor: boolean; authorModel:
   };
 }
 
+/**
+ * @RelayResolver
+ */
 export type IssueViewData = {
   showAuthor: boolean;
   authorModel: IssueAuthorViewData;
@@ -40,7 +46,7 @@ export type IssueViewData = {
 
 
 /**
- * @RelayResolver IssueAuthorViewData
+ * @RelayResolver
  */
 export function IssueAuthorViewData(): { id: DataID; avatarSize: number } {
   return {
@@ -49,56 +55,50 @@ export function IssueAuthorViewData(): { id: DataID; avatarSize: number } {
   };
 }
 
+/**
+ * @RelayResolver
+ */
 export type IssueAuthorViewData = {
   avatarSize: number;
 };
 
 /**
- * @RelayResolver Query.viewData: ViewData
- */
-export function viewData(): { id: DataID } {
-  return {
-    id: "viewData",
-  };
-}
-
-/**
- * @RelayResolver ViewData.searchPlaceholderText: String
+ * @RelayResolver
  */
 export function searchPlaceholderText(viewData: ViewData): string {
   return viewData.searchPlaceholderText;
 }
 
 /**
- * @RelayResolver ViewData.noResultsText: String
+ * @RelayResolver
  */
 export function noResultsText(viewData: ViewData): string {
   return viewData.noResultsText;
 }
 
 /**
- * @RelayResolver ViewData.issueModel: IssueViewData
+ * @RelayResolver
  */
 export function issueModel(viewData: ViewData): IssueViewData {
   return viewData.issueModel;
 }
 
 /**
- * @RelayResolver IssueViewData.showAuthor: Boolean
+ * @RelayResolver
  */
 export function showAuthor(viewData: IssueViewData): boolean {
   return viewData.showAuthor;
 }
 
 /**
- * @RelayResolver IssueViewData.authorModel: IssueAuthorViewData
+ * @RelayResolver
  */
 export function authorModel(viewData: IssueViewData): IssueAuthorViewData {
   return viewData.authorModel;
 }
 
 /**
- * @RelayResolver IssueAuthorViewData.avatarSize: Int
+ * @RelayResolver
  */
 export function avatarSize(viewData: IssueAuthorViewData): number {
   return viewData?.avatarSize;
